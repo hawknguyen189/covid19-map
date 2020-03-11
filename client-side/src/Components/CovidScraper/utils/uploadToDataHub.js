@@ -10,14 +10,15 @@ const credentials = require("./credentials")
 const baseUrl = `https://xyz.api.here.com/hub/spaces`
 const { spaceId, accessToken } = credentials
 
-function deleteAllFeatures() {
-  return fetch(`${baseUrl}/${spaceId}/features?tags=*`, {
-    method: "delete",
+function uploadToDataHub(reqBody) {
+  return fetch(`${baseUrl}/${spaceId}/features`, {
+    method: "put",
+    body: JSON.stringify(reqBody),
     headers: {
       "Authorization": `Bearer ${accessToken}`,
-      "Content-Type": "application/json",
+      "Content-Type": "application/geo+json",
     },
-  })
+  }).then(res => res.json())
 }
 
-module.exports = deleteAllFeatures
+module.exports = uploadToDataHub
