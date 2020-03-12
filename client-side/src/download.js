@@ -8,13 +8,13 @@
 const fetch = require("node-fetch")
 const dayjs = require("dayjs")
 
-const parseCsv = require("../utils/parseCsv")
-const getSupplement = require("../utils/getSupplement")
-const mergeData = require("../utils/mergeData")
-const prepareScrapedData = require("../utils/prepareScrapedData")
-const deleteAllFeatures = require("../utils/deleteAllFeatures")
-const uploadToDataHub = require("../utils/uploadToDataHub")
-const credentials = require("../utils/credentials")
+const parseCsv = require("./utils/parseCsv")
+const getSupplement = require("./utils/getSupplement")
+const mergeData = require("./utils/mergeData")
+const prepareScrapedData = require("./utils/prepareScrapedData")
+const deleteAllFeatures = require("./utils/deleteAllFeatures")
+const uploadToDataHub = require("./utils/uploadToDataHub")
+const credentials = require("./utils/credentials")
 
 const { secret } = credentials
 console.log("before start")

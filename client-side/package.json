@@ -15,8 +15,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "start:lambda": "npx netlify-lambda serve src/Components/CovidScraper/src",
-    "build:lambda": "npx netlify-lambda build src/Components/CovidScraper/src"
+    "start:lambda": "npx netlify-lambda serve src/download",
+    "build:lambda": "npx netlify-lambda build src/download"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -35,6 +35,11 @@
   },
   "proxy": "http://localhost:8000",
   "devDependencies": {
-    "netlify-lambda": "^1.6.3"
+    "netlify-lambda": "^1.6.3",
+    "d3-dsv": "^1.2.0",
+    "dayjs": "^1.8.20",
+    "googleapis": "39",
+    "lodash": "^4.17.15",
+    "node-fetch": "^2.6.0"
   }
 }
