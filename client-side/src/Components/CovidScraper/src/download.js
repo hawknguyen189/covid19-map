@@ -34,7 +34,7 @@ exports.handler = (event, context, callback) => {
   const sheetQueries = sheets.map(sheetName => {
     return fetch (`https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-${sheetName}.csv`).then(d => d.text())
   })
-
+console.log(sheets);
   Promise.all([
     ...sheetQueries,
     fetch("https://ncov.dxy.cn/ncovh5/view/pneumonia").then(d => d.text()),
