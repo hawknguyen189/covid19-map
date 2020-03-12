@@ -20,14 +20,14 @@ const { secret } = credentials
 console.log("before start")
 exports.handler = (event, context, callback) => {
   console.log("inside functions")
-  const apiKey = event.queryStringParameters.apiKey
-  if (apiKey !== secret) {
-    callback(null, {
-      statusCode: 403,
-      body: `You don't have access!`,
-    })
-    return
-  }
+  // const apiKey = event.queryStringParameters.apiKey
+  // if (apiKey !== secret) {
+  //   callback(null, {
+  //     statusCode: 403,
+  //     body: `You don't have access!`,
+  //   })
+  //   return
+  // }
 
   const sheets = ["Confirmed", "Recovered", "Deaths"]
 
@@ -35,6 +35,10 @@ exports.handler = (event, context, callback) => {
     return fetch (`https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-${sheetName}.csv`).then(d => d.text())
   })
 console.log(sheets);
+ callback(null, {
+   statusCode: 403,
+   body: sheets
+ });
   Promise.all([
     ...sheetQueries,
     fetch("https://ncov.dxy.cn/ncovh5/view/pneumonia").then(d => d.text()),
