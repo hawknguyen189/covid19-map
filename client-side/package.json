@@ -16,7 +16,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "start:lambda": "npx netlify-lambda serve src/download",
-    "build:lambda": "npx netlify-lambda build src/download"
+    "build:lambda": "npx netlify-lambda build src/download",
+    "generate-function": "ncc build src/download.js -o functions"
   },
   "eslintConfig": {
     "extends": "react-app"
