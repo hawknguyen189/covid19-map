@@ -7,6 +7,7 @@ var logger = require("morgan");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 const downloadRouter = require("./covid-scrapper/download");
+const fooRouter = require("./covid-scrapper/foo");
 
 var app = express();
 // view engine setup
@@ -21,11 +22,10 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
+app.use("/download", downloadRouter);
+app.use("/foo", fooRouter);
 
-app.use("/foo", (req, res, next) => {
-  console.log("foo inside");
-  res.send("foo");
-});
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
