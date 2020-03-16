@@ -12,6 +12,11 @@
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
     "morgan": "~1.9.1",
-    "nodemon": "^2.0.2"
+    "nodemon": "^2.0.2",
+    "d3-dsv": "^1.2.0",
+    "dayjs": "^1.8.20",
+    "googleapis": "39",
+    "lodash": "^4.17.15",
+    "node-fetch": "^2.6.0"
   }
 }
