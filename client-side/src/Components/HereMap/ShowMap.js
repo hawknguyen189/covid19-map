@@ -1,30 +1,43 @@
 import React, { useEffect } from "react";
 
 const ShowMap = () => {
+  const mapRef = React.useRef(null);
   useEffect(() => {
+    // `mapRef.current` will be `undefined` when this hook first runs; edge case that
+    if (!mapRef.current) return;
     // Initialize the platform object:
-    var platform = new H.service.Platform({
+    //declare H variable
+    const H = window.H;
+    const platform = new H.service.Platform({
       apikey: "PZ6cH-TXVo5jS9xcs8ehKjFBTtI1CgZeL5fzPHRgkcY"
     });
 
     // Obtain the default map types from the platform object
-    var maptypes = platform.createDefaultLayers();
+    const defaultLayers = platform.createDefaultLayers();
 
     // Instantiate (and display) a map object:
-    var map = new H.Map(
-      document.getElementById("mapContainer"),
-      maptypes.vector.normal.map,
-      {
-        zoom: 10,
-        center: { lng: 13.4, lat: 52.51 }
-      }
-    );
-  });
+    const hMap = new H.Map(mapRef.current, defaultLayers.vector.normal.map, {
+      center: { lat: 50, lng: 5 },
+      zoom: 4,
+      pixelRatio: window.devicePixelRatio || 1
+    });
+
+    const behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(hMap));
+
+    const ui = H.ui.UI.createDefault(hMap, defaultLayers);
+
+    // This will act as a cleanup to run once this hook runs again.
+    // This includes when the component un-mounts
+    return () => {
+      hMap.dispose();
+    };
+  }, [mapRef]); // This will run this hook every time this ref is updated
   return (
     <div
-      style="width: 640px; height: 480px"
+      ref={mapRef}
+      style={{ height: "500px" }}
       id="mapContainer"
-      class="container"
+      className="container map"
     ></div>
   );
 };
