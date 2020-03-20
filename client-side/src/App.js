@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "./logo.svg";
-import HereMap from "./Components/HereMap/HereMap"
+// import HereMap from "./Components/HereMap/HereMap";
+import LeafletMap from "./Components/LeafletMap/LeafletMap";
 import "./App.css";
 
 function App() {
@@ -19,9 +20,9 @@ function App() {
         >
           Learn React
         </a>
-
       </header>
-      <HereMap></HereMap>
+      <LeafletMap></LeafletMap>
+      {/* <HereMap></HereMap> */}
     </div>
   );
 }
